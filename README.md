@@ -5,7 +5,7 @@ Spittoon is a comic strip generator. It is an implementation of the [Microsoft C
 
 ![example comic strip](http://github.com/statico/spittoon/raw/master/examples/example-output.png)
 
-I wrote this as an experiment to learn Ruby in 2005. I had planned on making an ongoing comic strip, but it turns out that I'm not very funny. I've now released it as open-source.
+I wrote this as an experiment to learn Ruby in 2005. I had planned on making an ongoing comic strip, but it turned out that I wasn't very funny. I've now released it as open-source.
 
 Getting Started
 ---------------
