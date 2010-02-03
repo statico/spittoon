@@ -8,4 +8,6 @@ I wrote this as an experiment to learn Ruby in 2005. I had planned on making an 
 Getting Started
 ---------------
 
-You'll first need to install a few Ruby modules:
+1. First, install [RMagick](http://rmagick.rubyforge.org/).
+
+2. 
