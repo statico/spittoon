@@ -1,7 +1,10 @@
 a: hey, look at me! (speaking/exclaiming)
 b (surprised)
 
-a: i'm an example character! look at talk! i'm talking!
+a: i'm an example character! (positive)
+
+a: look at me talk! i'm talking! (positive)
+b (negative)
 
 a: it's so easy to make me talk! (positive)
 b: the hard part is getting you to stop (negative)
