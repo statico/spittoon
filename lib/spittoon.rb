@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 #--
 #
 # Copyright (c) 2010 Ian Langworth
@@ -76,7 +77,9 @@ module Spittoon
     strip.extrapolate_placement!
 
     image = StripRenderer.new(strip).render
-    image['comment'] = Spittoon.get('comment')
+    if Spittoon.has('comment')
+      image['comment'] = Spittoon.get('comment')
+    end
     return image
   end
 
@@ -578,7 +581,9 @@ module Spittoon
         if Spittoon.has?('caption')
           title = Magick::Image.read('caption:' + Spittoon.get('caption')) do
             self.size = "#{canvas.columns}x"
-            self.font = Spittoon.get('title_font_file')
+            if Spittoon.has('title_font_file')
+              self.font = Spittoon.get('title_font_file')
+            end
             self.pointsize = Spittoon.get('title_font_size')
             self.background_color = Spittoon.get('strip_background_color')
             self.fill = Spittoon.get('title_font_color')
@@ -994,7 +999,9 @@ module Spittoon
         self.size = "#{max_width-2}x"  # -2 to here because some letters were cut off
         self.antialias = true
         self.background_color = 'transparent'
-        self.font = Spittoon.get('chat_font_file')
+        if Spittoon.has('chat_font_file')
+          self.font = Spittoon.get('chat_font_file')
+        end
         self.pointsize = Spittoon.get('chat_font_size')
         self.fill = 'black'
         self.gravity = Magick::CenterGravity

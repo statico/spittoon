@@ -1,0 +1,80 @@
+---
+#
+# Example configuration for Spittoon.
+#
+
+# This comment is embedded in the output if the image format supports comments.
+comment: "Created with Spittoon: http://github.com/statico/spittoon"
+
+# Fonts
+#chat_font_file:         fonts/chatfont.ttf
+chat_font_size:         13
+chat_uppercase:         False
+#title_font_file:        fonts/titlefont.ttf
+title_font_size:        10
+title_font_color:       grey50
+
+# If specified, this is appended to the final image
+caption:                "www.myawesomecomics.com"
+
+# Various things you can tweak
+panel_size:             300
+strip_width:            480
+strip_background_color: white
+strip_padding:          10
+max_chars_in_panel:     4
+halo_size:              10
+min_balloon_width:      50
+balloon_padding:        8
+balloon_stroke:         1.5
+balloon_bulge:          4
+tail_width:             5
+body_on_head_distance:  0.6
+shadows:                True
+
+# Artwork directories
+background_dir:         backgrounds
+characters:
+  - bucket
+  - melon
+  - nibbles
+
+face_artwork_dir:       artwork/faces
+face_sets:
+  active:
+    - shocked
+    - speaking
+    - surprised
+    - grinning
+    - happy
+  passive:
+    - bored
+    - grinning
+    - happy
+    - listening
+    - listening2
+    - speaking
+  positive:
+    - grinning
+    - happy
+    - speaking
+  negative:
+    - annoyed
+    - angry
+    - bored
+    - grossed
+
+pose_artwork_dir:       artwork/poses
+pose_sets:
+  active:
+    - exclaiming
+    - explaining
+    - pointing
+    - question
+    - surprised
+  passive:
+    - question
+    - standing1
+    - standing2
+  other:
+    - surprised
