@@ -63,3 +63,10 @@ Development
 -----------
 
 I am not actively using or maintaining Spittoon, but I welcome your patches. Fork at your leisure.
+
+License
+-------
+
+The source code is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+
+The images in the `artwork/` and `backgrounds/` directories are licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/).
