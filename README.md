@@ -7,6 +7,13 @@ Spittoon is a comic strip generator. It is an implementation of the [Microsoft C
 
 I wrote this as an experiment to learn Ruby in 2005. I had planned on making an ongoing comic strip, but it turned out that I wasn't very funny. I've now released it as open-source.
 
+License
+-------
+
+The source code is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+
+The images in the `artwork/` and `backgrounds/` directories are licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/).
+
 Getting Started
 ---------------
 
@@ -63,10 +70,3 @@ Development
 -----------
 
 I am not actively using or maintaining Spittoon, but I welcome your patches. Fork at your leisure.
-
-License
--------
-
-The source code is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
-
-The images in the `artwork/` and `backgrounds/` directories are licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/).
