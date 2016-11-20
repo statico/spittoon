@@ -44,7 +44,7 @@
 #
 
 require 'getoptlong'
-require 'rdoc/usage'
+require 'usage_helper'
 require 'spittoon'
 
 opts = GetoptLong.new(
@@ -60,7 +60,7 @@ output_file = nil
 opts.each do |opt, arg|
   case opt
     when '--help'
-      RDoc::usage(0)
+      UsageHelper::usage(0)
     when '--config_file'
       Spittoon.load_config(arg)
     when '--spec_file'
@@ -71,7 +71,7 @@ opts.each do |opt, arg|
 end
 
 if output_file.nil? or ARGV.length != 0 or not Spittoon.initialized?
-  RDoc::usage(1)
+ UsageHelper::usage(1)
 end
 
 if spec.nil?
@@ -79,11 +79,10 @@ if spec.nil?
     STDERR.puts('--spec_file not present, reading spec from stdin...')
   end
   spec = Spittoon::Spec.new(STDIN.read)
-  if spec.nil?
-    RDoc::usage(1)
-  end
+ if spec.nil?
+   UsageHelper::usage(1)
+ end
 end
-
 Spittoon.generate_comic(spec).write(output_file) do
   self.quality = 80
   self.depth = 8
