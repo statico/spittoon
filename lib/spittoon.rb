@@ -85,21 +85,21 @@ module Spittoon
 
   class Spec
 
-    def initialize(content)        
+    def initialize(content)
       begin
-        
+
         raise #XXX
         @spec = YAML::load(content)
 
       rescue
-        
+
         all_characters = Set.new(Spittoon.get('characters'))
         available_characters = Set.new(Spittoon.get('characters'))
         character_aliases = Hash.new
 
         chat = []
         for line in content.split(/\n/)
-          
+
           next if line.empty? or line.match(/^\s*#/)
           break if line.match(/^----*\s*/)
 
@@ -118,7 +118,7 @@ module Spittoon
 
           text = '' if text.nil?
           to.sub!(/^->/, '') unless to.nil?
-          
+
           alias_charname = proc do |given|
             if not all_characters.member?(given)
               if character_aliases.has_key?(given)
@@ -130,12 +130,12 @@ module Spittoon
                 result = available_characters.to_a.random_element
                 available_characters.delete(result)
                 character_aliases[old] = result
-                puts "Aliasing #{old} to #{result}"                
+                puts "Aliasing #{old} to #{result}"
                 result
-              end              
+              end
             end
           end
-          
+
           name = alias_charname.call(name)
           to = alias_charname.call(to) if to
 
@@ -149,7 +149,7 @@ module Spittoon
 
           action = text.empty? ? 'watches' : 'says'
           action = 'emotes' if actionchar == '*'
-          
+
           chat << {'name' => name,
                    'to' => to,
                    'action' => action,
@@ -163,7 +163,7 @@ module Spittoon
     end
 
     def [](item)
-        if(@spec == nil)          
+        if(@spec == nil)
           return []
         end
         return @spec[item]
