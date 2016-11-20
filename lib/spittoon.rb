@@ -26,7 +26,7 @@
 # BIG DISCLAIMER: I wrote this in 2005 when I wanted to learn Ruby. It's
 # probably very un-Rubyish, but the results of using it are fun.
 
-require 'RMagick'
+require 'rmagick'
 require 'pathname'
 require 'pp'  # For debugging.
 require 'set'
@@ -85,17 +85,21 @@ module Spittoon
 
   class Spec
 
-    def initialize(content)
+    def initialize(content)        
       begin
+        
         raise #XXX
         @spec = YAML::load(content)
+
       rescue
+        
         all_characters = Set.new(Spittoon.get('characters'))
         available_characters = Set.new(Spittoon.get('characters'))
         character_aliases = Hash.new
 
         chat = []
         for line in content.split(/\n/)
+          
           next if line.empty? or line.match(/^\s*#/)
           break if line.match(/^----*\s*/)
 
@@ -114,11 +118,11 @@ module Spittoon
 
           text = '' if text.nil?
           to.sub!(/^->/, '') unless to.nil?
-
+          
           alias_charname = proc do |given|
             if not all_characters.member?(given)
               if character_aliases.has_key?(given)
-                return character_aliases[given]
+                character_aliases[given]
               elsif available_characters.empty?
                 raise "No more characters available for '#{given}': #{line}"
               else
@@ -126,12 +130,12 @@ module Spittoon
                 result = available_characters.to_a.random_element
                 available_characters.delete(result)
                 character_aliases[old] = result
-                puts "Aliasing #{old} to #{result}"
-                return result
-              end
+                puts "Aliasing #{old} to #{result}"                
+                result
+              end              
             end
           end
-
+          
           name = alias_charname.call(name)
           to = alias_charname.call(to) if to
 
@@ -145,7 +149,7 @@ module Spittoon
 
           action = text.empty? ? 'watches' : 'says'
           action = 'emotes' if actionchar == '*'
-
+          
           chat << {'name' => name,
                    'to' => to,
                    'action' => action,
@@ -159,7 +163,10 @@ module Spittoon
     end
 
     def [](item)
-      return @spec[item]
+        if(@spec == nil)          
+          return []
+        end
+        return @spec[item]
     end
 
   end
@@ -700,9 +707,9 @@ module Spittoon
       # Resize the background -- but not too small!
       bg_reduction_factor =
         case self.panel.size
-        when 1: (75 + rand(15))
-        when 2: (60 + rand(20))
-        when 3: (50 + rand(20))
+        when 1 then (75 + rand(15))
+        when 2 then (60 + rand(20))
+        when 3 then (50 + rand(20))
         else (50 + rand(10))
         end
       bg_reduction_factor /= 100
@@ -739,9 +746,9 @@ module Spittoon
     def apply_chars(bg, bit_snips, width, at_height)
       margin = width *
         case self.panel.size
-        when 1: (62 + rand(18))/100.0
-        when 2: (20 + rand(25))/100.0
-        when 3: (5 + rand(30))/100.0
+        when 1 then (62 + rand(18))/100.0
+        when 2 then (20 + rand(25))/100.0
+        when 3 then (5 + rand(30))/100.0
         else    0.00
         end
 
@@ -1027,13 +1034,13 @@ module Spittoon
 
       # XXX - painfully specific here
       case @bit.name
-        when 'easy': face.scale!(0.8)
-        when 'bucket': face.scale!(0.9)
-        when 'melon': face.scale!(0.9)
+        when 'easy'   then face.scale!(0.8)
+        when 'bucket' then face.scale!(0.9)
+        when 'melon'  then face.scale!(0.9)
       end
       head_multiplier = Spittoon.get('body_on_head_distance')
       case @bit.name
-        when 'melon': head_multiplier = head_multiplier - 0.1
+        when 'melon' then  head_multiplier = head_multiplier - 0.1
       end
 
       width = [face.columns, body.columns].max
@@ -1134,7 +1141,6 @@ module Magick
     end
 
   end
-
 end
 
 class Array
@@ -1167,4 +1173,3 @@ class Range
   end
 
 end
-
