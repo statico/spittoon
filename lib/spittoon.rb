@@ -1136,7 +1136,7 @@ module Magick
     end
 
     def tint_from_hue(hue, intensity=1.0)
-      pixel = Pixel.from_HSL([hue, 1.0, 0.5])
+      pixel = Pixel.from_hsla(hue, 1.0, 0.5)
       return self.tint(pixel, intensity)
     end
 
